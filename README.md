@@ -1,2 +1,2 @@
 # myDockerfile
-Dockerfile writen by me
+Dockerfile repository used as template
