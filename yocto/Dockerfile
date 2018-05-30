@@ -27,7 +27,8 @@ RUN cd poky; git checkout morty
 CMD bash
 WORKDIR /home/test/poky
 
-#run dpkg-reconfigure locales -> 139 -> 3
-#run locale-gen en_US.UTF-8
-#run update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-#run export LANG=en_US.UTF-8
+#run dpkg-reconfigure locales    type -> 139 -> 3
+#locale-gen en_US.UTF-8
+#update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+#export LANG=en_US.UTF-8
+#su test
