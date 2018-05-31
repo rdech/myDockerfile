@@ -24,7 +24,7 @@ RUN echo 149 > input; echo 3 >> input
 RUN dpkg-reconfigure locales < input && rm input
 RUN locale-gen en_US.UTF-8
 RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-RUN export LANG=en_US.UTF-8
+RUN echo "export LANG=en_US.UTF-8" >> /home/user/.bashrc
 
 WORKDIR /home/user
 RUN git clone git://git.yoctoproject.org/poky
