@@ -1,9 +1,10 @@
 #Run yocto on ubuntu 14.04
 FROM ubuntu:trusty
 
+ARG DEBIAN_FRONTEND=noninteractive
 RUN useradd --create-home user
-RUN apt update
-RUN apt install -y \
+RUN apt-get update
+RUN apt-get install -y \
 	gawk \
 	wget \
 	git-core \
@@ -19,7 +20,6 @@ RUN apt install -y \
 	python3 \
 	locales \
 	cpio
-#libsqlite3-dev ncurses-dev
 
 WORKDIR /home/user
 RUN git clone git://git.yoctoproject.org/poky
@@ -28,7 +28,7 @@ RUN echo 149 > input; echo 3 >> input
 RUN dpkg-reconfigure locales < input && rm input
 RUN locale-gen en_US.UTF-8
 RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-RUN export LANG=en_US.UTF-8
+RUN echo "export LANG=en_US.UTF-8" >> /home/user/.bashrc
 RUN chown -R user poky/
 CMD bash
 WORKDIR /home/user/poky
