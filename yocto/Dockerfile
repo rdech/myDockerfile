@@ -24,11 +24,10 @@ RUN apt install -y \
 WORKDIR /home/test
 RUN git clone git://git.yoctoproject.org/poky
 RUN cd poky; git checkout morty
+RUN echo 149 > input; echo 3 >> input
+RUN dpkg-reconfigure locales < input && rm input
+RUN locale-gen en_US.UTF-8
+RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+RUN export LANG=en_US.UTF-8
 CMD bash
 WORKDIR /home/test/poky
-
-#run dpkg-reconfigure locales    type -> 139 -> 3
-#locale-gen en_US.UTF-8
-#update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-#export LANG=en_US.UTF-8
-#su test
